@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+}
+
+body {
+  background-color: var(--bg-primary);
+}
+
+:root {
+  --color-primary: #d1d1d1;
+  --color-secondary: #9c9c9f;
+  --color-trinary: #fff;
+
+  --bg-header: #1c1d21;
+  --bg-primary: #23242a;
+  --bg-tierlist-odd: #2c2d33;
+  --bg-tierlist-even: #36373f;
+
+  --box-color-primary: #009eec;
+}

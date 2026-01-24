@@ -1,0 +1,25 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3rem;
+
+  margin: 3rem;
+}
+
+.error-title {
+  font-size: 3rem;
+  color: var(--color-trinary);
+  margin: 3rem 0;
+}
+
+.error-desc {
+  font-size: 2rem;
+  color: var(--color-secondary);
+}
+
+.error-desc a {
+  color: var(--box-color-primary);
+}
