@@ -12,3 +12,69 @@ header {
 .header-logo {
   font-size: 2rem;
 }
+
+.search-bar svg {
+  display: none;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-bar input {
+  height: 2rem;
+  width: 20rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+}
+
+.searched-data {
+  position: absolute;
+  top: 120%;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.searched-data img {
+  height: 5rem;
+  width: 4rem;
+}
+
+.searched-item {
+  display: flex;
+  gap: 1rem;
+  padding: 0.8rem;
+}
+
+.searched-item.even {
+  background: var(--bg-tierlist-even);
+}
+
+.searched-item.odd {
+  background: var(--bg-tierlist-odd);
+}
+
+.item-description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    font-size: 1.5rem;
+  }
+
+  .search-bar input {
+    display: none;
+  }
+
+  .search-bar svg {
+    display: block;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}
