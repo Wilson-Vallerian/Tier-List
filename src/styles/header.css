@@ -1,7 +1,7 @@
 header {
   background: var(--bg-header);
   color: var(--color-primary);
-  padding: 2rem;
+  padding: 1rem;
   margin: 1rem;
   position: sticky;
   display: flex;
@@ -22,11 +22,10 @@ header {
 }
 
 .search-bar input {
-  height: 2rem;
   width: 20rem;
-  padding: 1rem;
+  padding: 0.4rem;
   border-radius: 2rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .searched-data {
