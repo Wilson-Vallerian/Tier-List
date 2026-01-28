@@ -8,7 +8,7 @@ export default function SearchBar() {
     <div className="search-bar">
       <input
         type="text"
-        placeholder="search anime..."
+        placeholder="search..."
         onChange={(e) => setQuery(() => e.target.value)}
       />
 

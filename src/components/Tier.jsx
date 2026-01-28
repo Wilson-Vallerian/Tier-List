@@ -14,6 +14,7 @@ export default function Tier({ tierTitle, selectorState, bgColor }) {
               <div key={`${item.title}-${i}`} className="tier-item">
                 <img src={item.image} />
                 <p>{item.title}</p>
+                {console.log(selectorState)}
               </div>
             );
           })}
@@ -21,3 +22,7 @@ export default function Tier({ tierTitle, selectorState, bgColor }) {
     </div>
   );
 }
+
+// TODO: ADD HOVER EFFECT ON ITEM LIST: (+) AND BLUR THE SEARCHED ITEM
+// TODO: ENABLE USER TO ADD HOW MANY TIERLIST THEY WANT (MODIFY STORE)
+// TODO: ENABLE USER TO MOVE THE LIST ITEM TO OTHER LIST

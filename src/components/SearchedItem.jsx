@@ -1,16 +1,24 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchedItem({ result, i }) {
   const dispatch = useDispatch();
+  const lists = useSelector((state) => state.lists);
 
   function handleClick() {
-    dispatch({
-      type: "ADD_ITEM",
-      payload: {
-        title: result.titles[0].title,
-        image: result.images.jpg.image_url,
-      },
-    });
+    const payload = {
+      id: result.mal_id,
+      title: result.titles[0].title,
+      image: result.images.jpg.image_url,
+      type: "unplaced",
+    };
+
+    const hasExist = lists.some((item) => item.id === payload.id);
+    if (!hasExist) {
+      dispatch({
+        type: "ADD_ITEM",
+        payload: payload,
+      });
+    }
   }
 
   return (

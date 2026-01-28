@@ -51,3 +51,27 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.tier-setup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  margin: 2rem;
+}
+
+.tier-setup input {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: var(--bg-primary);
+}
+
+.tier-setup button {
+  padding: 1rem;
+  background: var(--bg-header);
+  border: 0.1rem solid var(--color-secondary);
+  border-radius: 1rem;
+}
