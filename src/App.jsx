@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import ErrorRoute from "./routes/ErrorRoute";
 import RootLayout from "./routes/RootLayout";
-import Body from "./components/Body";
+import Body from "./components/body/Body";
 
 const router = createBrowserRouter([
   {

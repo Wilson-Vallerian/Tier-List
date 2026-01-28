@@ -1,10 +1,10 @@
-import "../styles/body.css";
+import "../../styles/body.css";
 import Tier from "./Tier";
 import { useSelector } from "react-redux";
 import { closestCenter, DndContext } from "@dnd-kit/core";
-import { selectUnplacedItems } from "../selectors/selectors";
+import { selectUnplacedItems } from "../../selectors/selectors";
 import { useRef, useState } from "react";
-import { tierLabels } from "../assets/resources";
+import { tierLabels } from "../../assets/resources";
 
 export default function Body() {
   const [manyTier, setManyTier] = useState(0);
@@ -35,11 +35,11 @@ export default function Body() {
     const value = manyTierRef.current;
 
     if (!value) {
-      setError("Please enter how many tiers you want.");
+      setError("Please enter how many tiers you want!");
     }
 
     if (value < 1 || value > 10) {
-      setError("You can create between 1 and 10 tiers.");
+      setError("You can only create between 1 to 10 tiers!");
     } else {
       setError(undefined);
       setManyTier(value);
@@ -48,6 +48,8 @@ export default function Body() {
 
   return (
     <div className="body">
+      {error ? <div className="error">{error}</div> : null}
+
       {!manyTier && (
         <div className="tier-setup">
           <input
@@ -58,8 +60,6 @@ export default function Body() {
           <button onClick={handleConfirm}>confirm</button>
         </div>
       )}
-
-      {error ? <div>{error}</div> : null}
 
       {manyTier > 0 && (
         <DndContext collisionDetection={closestCenter}>

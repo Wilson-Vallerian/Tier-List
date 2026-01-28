@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 
-export default function SearchedItem({ result, i }) {
+export default function SearchedItem({ result, i, setQuery }) {
   const dispatch = useDispatch();
   const lists = useSelector((state) => state.lists);
 
@@ -18,6 +18,7 @@ export default function SearchedItem({ result, i }) {
         type: "ADD_ITEM",
         payload: payload,
       });
+      setQuery("");
     }
   }
 
@@ -26,6 +27,9 @@ export default function SearchedItem({ result, i }) {
       className={`searched-item ${i % 2 === 0 ? "even" : "odd"}`}
       onClick={handleClick}
     >
+      <div className="plus_sign">
+        <p>+</p>
+      </div>
       <img src={result.images.jpg.image_url} />
       <div className="item-description">
         <p>{result.titles[0].title}</p>

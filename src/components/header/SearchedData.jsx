@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SearchedItem from "./SearchedItem";
 
-export default function SearchedData({ query }) {
+export default function SearchedData({ query, setQuery }) {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
@@ -35,6 +35,7 @@ export default function SearchedData({ query }) {
                 key={result.images.jpg.image_url}
                 result={result}
                 i={i}
+                setQuery={setQuery}
               />
             );
           })}

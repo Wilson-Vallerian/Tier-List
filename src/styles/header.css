@@ -57,6 +57,30 @@ header {
   background: var(--bg-tierlist-odd);
 }
 
+.plus_sign {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    width 0.25s ease,
+    opacity 0.2s ease;
+}
+
+.searched-item:hover .plus_sign {
+  width: 32px;
+  opacity: 1;
+}
+
+.plus_sign p {
+  margin: 0;
+  white-space: nowrap;
+}
+
 .item-description {
   display: flex;
   flex-direction: column;

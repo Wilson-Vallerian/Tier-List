@@ -9,10 +9,11 @@ export default function SearchBar() {
       <input
         type="text"
         placeholder="search..."
+        value={query}
         onChange={(e) => setQuery(() => e.target.value)}
       />
 
-      <SearchedData query={query} />
+      <SearchedData query={query} setQuery={setQuery} />
     </div>
   );
 }
