@@ -1,34 +1,16 @@
 import "../../styles/body.css";
-import Tier from "./Tier";
 import { useSelector } from "react-redux";
-import { closestCenter, DndContext } from "@dnd-kit/core";
 import { selectUnplacedItems } from "../../selectors/selectors";
 import { useRef, useState } from "react";
-import { tierLabels } from "../../assets/resources";
+import TierSetup from "./TierSetup";
+import Tiers from "./Tiers";
+import Error from "./Error";
 
 export default function Body() {
   const [manyTier, setManyTier] = useState(0);
   const [error, setError] = useState(undefined);
   const manyTierRef = useRef(0);
   const lists = useSelector(selectUnplacedItems);
-
-  const tiers = buildTiers(tierLabels, manyTier);
-
-  function buildTiers(labels, count) {
-    const base = labels.slice(0, count);
-
-    if (count <= labels.length) {
-      return base;
-    }
-
-    const extraCount = count - labels.length;
-    const fillers = Array.from({ length: extraCount }, () => ({
-      title: "Name Me!",
-      bgColor: "grey",
-    }));
-
-    return [...base, ...fillers];
-  }
 
   function handleConfirm(e) {
     e.preventDefault();
@@ -48,34 +30,15 @@ export default function Body() {
 
   return (
     <div className="body">
-      {error ? <div className="error">{error}</div> : null}
+      <Error error={error} />
 
-      {!manyTier && (
-        <div className="tier-setup">
-          <input
-            placeholder="How Many tier?"
-            type="number"
-            onChange={(e) => (manyTierRef.current = Number(e.target.value))}
-          />
-          <button onClick={handleConfirm}>confirm</button>
-        </div>
-      )}
+      <TierSetup
+        manyTier={manyTier}
+        manyTierRef={manyTierRef}
+        handleConfirm={handleConfirm}
+      />
 
-      {manyTier > 0 && (
-        <DndContext collisionDetection={closestCenter}>
-          {tiers.map((el, i) => {
-            return (
-              <Tier
-                key={`${el.title}-${i}`}
-                selectorState={[]}
-                tierTitle={el.title}
-                bgColor={el.bgColor}
-              />
-            );
-          })}
-          <Tier selectorState={lists} tierTitle="Unplaced" bgColor="black" />
-        </DndContext>
-      )}
+      <Tiers manyTier={manyTier} lists={lists} />
     </div>
   );
 }

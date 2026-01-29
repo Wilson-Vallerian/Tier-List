@@ -1,7 +1,7 @@
 import * as Redux from "redux";
 
 const initialState = {
-  lists: [],
+  unplacedItems: [],
 };
 
 const listsReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const listsReducer = (state = initialState, action) => {
     case "ADD_ITEM":
       return {
         ...state,
-        lists: [...state.lists, action.payload],
+        unplacedItems: [...state.unplacedItems, action.payload],
       };
 
     case "MOVE_ITEM":

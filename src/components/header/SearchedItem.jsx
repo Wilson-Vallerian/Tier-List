@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchedItem({ result, i, setQuery }) {
   const dispatch = useDispatch();
-  const lists = useSelector((state) => state.lists);
+  const lists = useSelector((state) => state.unplacedItems);
 
   function handleClick() {
     const payload = {

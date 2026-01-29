@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TierItem from "./TierItem";
 export default function Tier({ tierTitle, selectorState, bgColor }) {
   const [title, setTitle] = useState(tierTitle);
 
@@ -9,15 +10,9 @@ export default function Tier({ tierTitle, selectorState, bgColor }) {
       </div>
       <div className="tier-item-wrapper">
         {selectorState.length > 0 &&
-          selectorState.map((item, i) => {
-            return (
-              <div key={`${item.title}-${i}`} className="tier-item">
-                <img src={item.image} />
-                <p>{item.title}</p>
-                {console.log(selectorState)}
-              </div>
-            );
-          })}
+          selectorState.map((item, i) => (
+            <TierItem key={`${item.title}-${i}`} item={item} />
+          ))}
       </div>
     </div>
   );
