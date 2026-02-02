@@ -3,7 +3,7 @@
 export const selectItems = [
   {
     id: 20,
-    title: "Naruto",
+    title: "Naruto the Animation hjibeifbabfobakngieneongoegnonegengo",
     image: "https://cdn.myanimelist.net/images/anime/1141/142503.jpg",
   },
   {
