@@ -60,6 +60,14 @@
   gap: 1rem;
 }
 
+.drop-zone.odd {
+  background: var(--bg-tierlist-odd);
+}
+
+.drop-zone.even {
+  background: var(--bg-tierlist-even);
+}
+
 .drop-zone .title {
   display: flex;
   display: flex;

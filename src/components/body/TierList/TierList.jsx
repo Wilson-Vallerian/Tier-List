@@ -4,12 +4,28 @@ import { DndContext, DragOverlay } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 
 import DropZone from "./DropZone";
-import { selectItems } from "../../../selectors/selectors";
+import { selectItems as items } from "../../../selectors/selectors";
 import { activeDragableAtom } from "../../../atoms/dragAtoms";
-import { defaultDropZones, dropzoneIds } from "../../../assets/resources";
 import DragableContent from "./DragableContent";
+import { useSelector } from "react-redux";
 
 export default function TierList({ manyTier }) {
+  const selectItems = useSelector(items);
+  const defaultDropZones = [
+    { id: "S", dragables: [] },
+    { id: "A", dragables: [] },
+    { id: "B", dragables: [] },
+    { id: "C", dragables: [] },
+    { id: "D", dragables: [] },
+    { id: "E", dragables: [] },
+    { id: "F", dragables: [] },
+    { id: "G", dragables: [] },
+    { id: "H", dragables: [] },
+    { id: "I", dragables: [] },
+    { id: "free", dragables: selectItems.map((item) => item.id) },
+  ];
+  const dropzoneIds = defaultDropZones.map((dz) => dz.id);
+
   const lists = selectItems;
   const [dragables, setDragables] = useState(lists);
   const [activeDragable, setActiveDragable] = useAtom(activeDragableAtom);
@@ -127,6 +143,19 @@ export default function TierList({ manyTier }) {
     setDragables(lists);
   }, [lists]);
 
+  useEffect(() => {
+    setDropZones((prev) =>
+      prev.map((dz) =>
+        dz.id === "free"
+          ? {
+              ...dz,
+              dragables: selectItems.map((item) => item.id),
+            }
+          : dz,
+      ),
+    );
+  }, [selectItems]);
+
   return (
     <div className="tier-wrapper">
       <DndContext
@@ -138,7 +167,7 @@ export default function TierList({ manyTier }) {
           .filter((dz) => dz.id !== "free")
           .map((dz, i) => {
             if (i < manyTier) {
-              return <DropZone dropZone={dz} key={dz.id} />;
+              return <DropZone dropZone={dz} key={dz.id} isOdd={i % 2 === 1} />;
             }
           })}
 

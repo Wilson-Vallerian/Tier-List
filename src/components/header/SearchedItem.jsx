@@ -2,14 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchedItem({ result, i, setQuery }) {
   const dispatch = useDispatch();
-  const lists = useSelector((state) => state.unplacedItems);
+  const lists = useSelector((state) => state.items);
 
   function handleClick() {
     const payload = {
       id: result.mal_id,
       title: result.titles[0].title,
       image: result.images.jpg.image_url,
-      type: "unplaced",
     };
 
     const hasExist = lists.some((item) => item.id === payload.id);

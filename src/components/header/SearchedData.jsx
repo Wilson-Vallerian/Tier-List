@@ -29,7 +29,7 @@ export default function SearchedData({ query, setQuery }) {
       {results.length > 0 && (
         <div className="searched-data">
           {results.map((result, i) => {
-            console.log(result);
+            // console.log(result);
             return (
               <SearchedItem
                 key={result.images.jpg.image_url}

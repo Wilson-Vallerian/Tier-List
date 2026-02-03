@@ -1,10 +1,12 @@
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-import { selectItems } from "../../../selectors/selectors";
+import { selectItems as items } from "../../../selectors/selectors";
 import Dragable from "./Dragable";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-export default function DropZone({ dropZone, isFree = false }) {
+export default function DropZone({ dropZone, isOdd = true, isFree = false }) {
+  const selectItems = useSelector(items);
   const { id, dragables } = dropZone;
   const { setNodeRef } = useDroppable({
     id,
@@ -12,7 +14,10 @@ export default function DropZone({ dropZone, isFree = false }) {
   const [title, setTitle] = useState(dropZone.id);
 
   return (
-    <div className="drop-zone">
+    <div
+      className={`drop-zone ${isOdd ? "odd" : "even"}`}
+      style={isFree ? { background: "wheat", color: "black" } : null}
+    >
       {!isFree && (
         <div className="title" style={{ backgroundColor: "red" }}>
           <input
