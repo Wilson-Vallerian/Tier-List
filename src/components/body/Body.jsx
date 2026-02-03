@@ -26,16 +26,18 @@ export default function Body() {
   }
 
   return (
-    <div className="body">
-      <Error error={error} />
+    <main>
+      <div className="body">
+        <Error error={error} />
 
-      <TierSetup
-        manyTier={manyTier}
-        manyTierRef={manyTierRef}
-        handleConfirm={handleConfirm}
-      />
+        <TierSetup
+          manyTier={manyTier}
+          manyTierRef={manyTierRef}
+          handleConfirm={handleConfirm}
+        />
 
-      {manyTier ? <TierList manyTier={manyTier} /> : undefined}
-    </div>
+        {manyTier ? <TierList manyTier={manyTier} /> : undefined}
+      </div>
+    </main>
   );
 }

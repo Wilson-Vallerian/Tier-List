@@ -29,7 +29,7 @@ export default function SearchedItem({ result, i, setQuery }) {
       <div className="plus_sign">
         <p>+</p>
       </div>
-      <img src={result.images.jpg.image_url} />
+      <img src={result.images.jpg.image_url} alt={result.titles[0].title} />
       <div className="item-description">
         <p>{result.titles[0].title}</p>
         <p>{result.score}</p>
