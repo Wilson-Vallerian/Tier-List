@@ -2,7 +2,7 @@ import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { selectItems as items } from "../../../selectors/selectors";
 import Dragable from "./Dragable";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function DropZone({ dropZone, isOdd = true, isFree = false }) {
@@ -12,6 +12,13 @@ export default function DropZone({ dropZone, isOdd = true, isFree = false }) {
     id,
   });
   const [title, setTitle] = useState(dropZone.id);
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    if (!textareaRef.current) return;
+    textareaRef.current.style.height = "auto";
+    textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+  }, [title]);
 
   return (
     <div
@@ -19,10 +26,12 @@ export default function DropZone({ dropZone, isOdd = true, isFree = false }) {
       style={isFree ? { background: "wheat", color: "black" } : null}
     >
       {!isFree && (
-        <div className="title" style={{ backgroundColor: "red" }}>
-          <input
+        <div className="title" style={{ backgroundColor: dropZone.bgColor }}>
+          <textarea
             value={title}
             onChange={(e) => setTitle(() => e.target.value)}
+            rows={1}
+            ref={textareaRef}
           />
         </div>
       )}
@@ -45,5 +54,3 @@ export default function DropZone({ dropZone, isOdd = true, isFree = false }) {
     </div>
   );
 }
-
-// TODO: ENABLE USER TO CHANGE INPUT BG_COLOR

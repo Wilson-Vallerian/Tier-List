@@ -12,16 +12,16 @@ import { useSelector } from "react-redux";
 export default function TierList({ manyTier }) {
   const selectItems = useSelector(items);
   const defaultDropZones = [
-    { id: "S", dragables: [] },
-    { id: "A", dragables: [] },
-    { id: "B", dragables: [] },
-    { id: "C", dragables: [] },
-    { id: "D", dragables: [] },
-    { id: "E", dragables: [] },
-    { id: "F", dragables: [] },
-    { id: "G", dragables: [] },
-    { id: "H", dragables: [] },
-    { id: "I", dragables: [] },
+    { id: "S", dragables: [], bgColor: "#ff4d4f" },
+    { id: "A", dragables: [], bgColor: "#ff7a45" },
+    { id: "B", dragables: [], bgColor: "#ffa940" },
+    { id: "C", dragables: [], bgColor: "#fadb14" },
+    { id: "D", dragables: [], bgColor: "#a0d911" },
+    { id: "E", dragables: [], bgColor: "#52c41a" },
+    { id: "F", dragables: [], bgColor: "#13c2c2" },
+    { id: "G", dragables: [], bgColor: "#1890ff" },
+    { id: "H", dragables: [], bgColor: "#722ed1" },
+    { id: "I", dragables: [], bgColor: "#595959" },
     { id: "free", dragables: selectItems.map((item) => item.id) },
   ];
   const dropzoneIds = defaultDropZones.map((dz) => dz.id);
