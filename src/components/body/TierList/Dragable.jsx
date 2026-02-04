@@ -22,6 +22,7 @@ export default function Dragable({ dragable }) {
       {...attributes}
     >
       <DragableContent dragable={dragable} />
+      {/* {console.log(dragable)} */}
     </button>
   );
 }

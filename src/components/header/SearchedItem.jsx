@@ -5,17 +5,11 @@ export default function SearchedItem({ result, i, setQuery }) {
   const lists = useSelector((state) => state.items);
 
   function handleClick() {
-    const payload = {
-      id: result.mal_id,
-      title: result.titles[0].title,
-      image: result.images.jpg.image_url,
-    };
-
-    const hasExist = lists.some((item) => item.id === payload.id);
+    const hasExist = lists.some((item) => item.id === result.id);
     if (!hasExist) {
       dispatch({
         type: "ADD_ITEM",
-        payload: payload,
+        payload: result,
       });
       setQuery("");
     }
@@ -29,11 +23,11 @@ export default function SearchedItem({ result, i, setQuery }) {
       <div className="plus_sign">
         <p>+</p>
       </div>
-      <img src={result.images.jpg.image_url} alt={result.titles[0].title} />
+      <img src={result.image || "/no-cover.png"} alt={result.title} />
       <div className="item-description">
-        <p>{result.titles[0].title}</p>
-        <p>{result.score}</p>
-        <p>{result.aired.string}</p>
+        <p>{result.title}</p>
+        {result.score !== null && <p>{result.score}</p>}
+        <p>{result.meta}</p>
       </div>
     </div>
   );

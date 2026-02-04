@@ -1,6 +1,7 @@
 import * as Redux from "redux";
 
 const initialState = {
+  category: "anime",
   items: [],
 };
 
@@ -10,6 +11,12 @@ const listsReducer = (state = initialState, action) => {
       return {
         ...state,
         items: [...state.items, action.payload],
+      };
+
+    case "SET_CATEGORY":
+      return {
+        ...state,
+        category: action.payload,
       };
 
     default:

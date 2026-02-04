@@ -45,3 +45,5 @@ export default function DropZone({ dropZone, isOdd = true, isFree = false }) {
     </div>
   );
 }
+
+// TODO: ENABLE USER TO CHANGE INPUT BG_COLOR

@@ -1,6 +1,6 @@
 import "../../styles/body.css";
 import { useRef, useState } from "react";
-import TierSetup from "./TierSetup";
+import TierSetup from "./setup/TierSetup";
 import Error from "./Error";
 import TierList from "./TierList/TierList";
 

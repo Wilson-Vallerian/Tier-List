@@ -144,17 +144,24 @@ export default function TierList({ manyTier }) {
   }, [lists]);
 
   useEffect(() => {
-    setDropZones((prev) =>
-      prev.map((dz) =>
+    setDropZones((prev) => {
+      const usedIds = new Set(
+        prev.filter((dz) => dz.id !== "free").flatMap((dz) => dz.dragables),
+      );
+      setActiveDragable(undefined);
+
+      return prev.map((dz) =>
         dz.id === "free"
           ? {
               ...dz,
-              dragables: selectItems.map((item) => item.id),
+              dragables: selectItems
+                .map((item) => item.id)
+                .filter((id) => !usedIds.has(id)),
             }
           : dz,
-      ),
-    );
-  }, [selectItems]);
+      );
+    });
+  }, [selectItems, setActiveDragable]);
 
   return (
     <div className="tier-wrapper">
